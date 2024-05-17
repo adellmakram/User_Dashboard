@@ -1,22 +1,19 @@
-  <div class="container my-5">
-    <mat-card *ngIf="user; else errorTemplate" class="p-3" >
-      <mat-card-avatar  [ngStyle]="">
-        <img [src]="user.avatar" alt="{{ user.first_name }} {{ user.last_name }}">
-      </mat-card-avatar>
-      <mat-card-title>{{ user.first_name }} {{ user.last_name }}</mat-card-title>
+<div class="container my-5">
+  <mat-card *ngIf="user; else errorTemplate" class="p-3">
+    <mat-card-avatar [ngStyle]="">
+      <img [src]="user.avatar" alt="{{ user.first_name }} {{ user.last_name }}">
+    </mat-card-avatar>
+    <mat-card-title>{{ user.first_name }} {{ user.last_name }}</mat-card-title>
     <mat-card-content>
       <p><b>ID:</b> {{ user.id }}</p>
       <p><b>First Name:</b> {{ user.first_name }}</p>
       <p><b>Last Name:</b> {{ user.last_name }}</p>
       <p><b>Email:</b> {{ user.email }}</p>
-
     </mat-card-content>
-    <button type="button" class="btn btn-info mt-5"(click)="goBack()">Back</button>
+    <button type="button" class="btn btn-info mt-5" (click)="goBack()">Back</button>
   </mat-card>
-  
+
   <ng-template #errorTemplate>
     <app-error errorMessage="User not found"></app-error>
   </ng-template>
-  
 </div>
-  

@@ -7,6 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { ErrorComponent } from './components/error/error.component';
+import { FooterComponent } from './components/footer/footer.component'; 
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
@@ -16,9 +19,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { HttpClientModule } from '@angular/common/http'; 
 import { RouterModule, Routes } from '@angular/router';
-import { FooterComponent } from './components/footer/footer.component'; 
 import { ReactiveFormsModule } from '@angular/forms';
-import { ErrorComponent } from './components/error/error.component';
+import { StoreModule } from '@ngrx/store';
+import { cacheReducer  } from './Reducers/cache.reducer';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const routes: Routes = [
   { path: '', component: UserListComponent },
@@ -32,7 +36,8 @@ const routes: Routes = [
     UserListComponent,
     UserDetailsComponent,
     FooterComponent,
-    ErrorComponent
+    ErrorComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,9 @@ const routes: Routes = [
     MatPaginatorModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({ cache: cacheReducer }),
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
