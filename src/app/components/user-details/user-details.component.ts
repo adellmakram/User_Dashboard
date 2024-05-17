@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'; // Import ActivatedRoute
-import { Router } from '@angular/router'; // Import Router
-import { UserService } from 'src/app/services/user.service'; // Import UserService
+import { ActivatedRoute } from '@angular/router'; 
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-details',
@@ -18,7 +18,12 @@ export class UserDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.params['id'];
+    this.route.params.subscribe(params => {
+      const id = +params['id'];
+      this.getUserDetails(id);
+    });
+  }
+  getUserDetails(id: number) {
     this.userService.getUserById(id).subscribe(response => {
       this.user = response.data;
     });

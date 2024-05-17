@@ -1,0 +1,26 @@
+.user-list-container {
+  border: 1px solid #ced4da; 
+  border-radius: 5px; 
+  overflow: hidden; 
+}
+
+.user-list-header {
+  padding: 10px;
+}
+
+.top-left-text {
+  font-weight: bold;
+}
+
+.user-card {
+  padding: 20px;
+  border-bottom: 1px solid #ced4da;
+}
+
+.user-card:last-child {
+  border-bottom: none;
+}
+
+.user-avatar img {
+  width: 120%;
+}

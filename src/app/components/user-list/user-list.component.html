@@ -1,10 +1,25 @@
-<div class="user-list">
-    <mat-card *ngFor="let user of users" (click)="navigateToUser(user.id)">
-      <mat-card-header>
-        <mat-card-avatar [ngStyle]="{'background-image': 'url(' + user.avatar + ')'}"></mat-card-avatar>
-        <mat-card-title>{{ user.first_name }} {{ user.last_name }}</mat-card-title>
-      </mat-card-header>
-    </mat-card>
+<div class="container mt-4">
+  <div class="user-list-container">
+    <div class="user-list-header">
+      <span class="top-left-text">Dynamic User Dashboard</span>
+    </div>
+    <div class="user-list">
+      <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let user of users" (click)="navigateToUser(user.id)">
+          <div class="user-card">
+            <mat-card class="h-100">
+              <mat-card-header>
+                <div mat-card-avatar class="user-avatar">
+                  <img [src]="user.avatar" alt="{{ user.first_name }} {{ user.last_name }}">
+                </div>
+                <mat-card-title class="clickable">{{ user.first_name }} {{ user.last_name }}</mat-card-title>
+                <mat-card-subtitle>ID: {{ user.id }}</mat-card-subtitle>
+              </mat-card-header>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <mat-paginator [length]="totalUsers" [pageSize]="6" (page)="onPageChange($event)"></mat-paginator>
-  
+</div>

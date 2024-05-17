@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +7,21 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  @Output() search = new EventEmitter<string>();
+  @ViewChild('searchInput') searchInput!: ElementRef;
 
-  onSearch(event: Event) {
-    const inputElement = event.target as HTMLInputElement;
-    this.search.emit(inputElement.value);
+  constructor(private router: Router) {
+    
+  }
+  searchById(id: string) {
+    const parsedId = parseInt(id, 10);
+    if (!isNaN(parsedId)) {
+      this.router.navigate(['/user', parsedId]).then(() => {
+        this.searchInput.nativeElement.value = '';
+      });
+      
+    }
+  }
+  navigateToHome() {
+    this.router.navigateByUrl('/');
   }
 }

@@ -1,9 +1,10 @@
-<mat-toolbar color="primary">
-    <span>Dynamic User Dashboard</span>
-    <span class="spacer"></span>
-    <mat-form-field appearance="outline">
-      <mat-label>Search by ID</mat-label>
-      <input matInput (input)="onSearch($event)">
-    </mat-form-field>
-  </mat-toolbar>
+<mat-toolbar color="primary" class="d-flex justify-content-between p-5">
+  <div class="d-flex align-items-center clickable">
+    <img src="assets/Images/maids_cc_logo.svg" alt="Logo" height="32" (click)="navigateToHome()">
+  </div>
   
+  <mat-form-field appearance="outline">
+    <mat-label>Search by ID</mat-label>
+    <input matInput #searchInput (keydown.enter)="searchById(searchInput.value)">
+  </mat-form-field>
+</mat-toolbar>
