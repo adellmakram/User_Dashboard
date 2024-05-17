@@ -1,1 +1,9 @@
-<p>header works!</p>
+<mat-toolbar color="primary">
+    <span>Dynamic User Dashboard</span>
+    <span class="spacer"></span>
+    <mat-form-field appearance="outline">
+      <mat-label>Search by ID</mat-label>
+      <input matInput (input)="onSearch($event)">
+    </mat-form-field>
+  </mat-toolbar>
+  
